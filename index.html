@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="./animate.min.css">
+    <script src="./swiper-3.4.2.min.js"></script>
+    <script src="./swiper.animate1.0.2.min.js"></script>
+    <script src="./jquery-1.10.1.min.js"></script>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-no-swiping">
+                <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">Slide 1</p>
+                <div style="background-color:brown;width:100px;height:100px;" class="ani" swiper-animate-effect="zoomIn" swiper-animate-duration="5s" swiper-animate-delay="0.8s" id="111">
+
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">Slide 2</p>
+            </div>
+            <div class="swiper-slide">
+                <p class="ani" swiper-animate-effect="fadeInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0.3s">Slide 3</p>
+            </div>
+        </div>
+    </div>
+    <script>        
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical',
+            loop: false,
+            onInit: function(swiper){ //Swiper2.x的初始化是onFirstInit
+                swiperAnimateCache(swiper); //隐藏动画元素 
+                swiperAnimate(swiper); //初始化完成开始动画
+            }, 
+            onSlideChangeEnd: function(swiper){ 
+                swiperAnimate(swiper); //每个slide切换结束时也运行当前slide动画
+            } 
+        })
+        $('#111').click(function(){
+            mySwiper.slideTo(1,1000);
+        })
+    </script>
+</body>
+</html>
